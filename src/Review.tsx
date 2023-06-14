@@ -15,6 +15,7 @@ const Review = () => {
     return number;
   };
 
+  // @ts-ignore
   const getReview = (e: React.MouseEvent<HTMLButtonElement>, type: string) => {
        setIndex((index) => {
           let newIndex = (type === 'previous') ? index - 1 : index + 1
