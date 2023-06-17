@@ -5,6 +5,7 @@ import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Review from "./components/Review.tsx";
 import ErrorPage from "./error.page.tsx";
+import ExpandableImage from "./components/ExpandableImage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/reviews",
         element: <Review />,
+      },
+      {
+        path: "/expandable-image",
+        element: <ExpandableImage />,
       },
     ],
   },

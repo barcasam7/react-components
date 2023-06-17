@@ -240,6 +240,45 @@ nav ul {
   padding: 0 2rem;
   display: flex;
   justify-content: center;
+
+  .container {
+    display: flex;
+    width: 75vw;
+
+    /// Expandable image
+    .panel {
+      background-size: auto 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80vh;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      flex: 0.5;
+      margin: 10px;
+      position: relative;
+      transition: flex 0.7s ease-in;
+
+      h3 {
+        font-size: 24px;
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease-in 0.4s;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .active {
+      flex: 5;
+
+      h3 {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .review {
@@ -249,7 +288,7 @@ nav ul {
   box-shadow: var(--light-shadow);
   transition: var(--transition);
   text-align: center;
-  width: 400px;
+  width: 500px;
 }
 
 .review:hover {
