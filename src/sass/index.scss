@@ -1,3 +1,6 @@
+@use 'components/_reviews.scss';
+@use 'components/_expandableImage.scss';
+
 /*
 =============== 
 Variables
@@ -151,21 +154,38 @@ p {
   }
 }
 
-/*
-=============== 
-Reviews
-===============
-*/
 main {
   min-height: 100vh;
 }
 
 #sidebar {
-  position: fixed;
-  width: 20%;
-  height: 100vh;
-  background: #ffffff;
-  font-size: 0.65em;
+  .nav {
+    position: fixed;
+    width: 20%;
+    height: 100vh;
+    background: #ffffff;
+    font-size: 0.65em;
+    margin: 0;
+    padding: 0px 20px;
+  }
+}
+
+.mobile-nav {
+  display: none;
+}
+
+
+.hamburger {
+  display: none;
+  height: 50px;
+  width: 50px;
+
+  .bar {
+    background-color: black;
+    height: 4px;
+    width: 36px;
+    margin: 3px;
+  }
 }
 
 nav {
@@ -220,7 +240,6 @@ nav ul {
 .title {
   margin-top: 10px;
   text-align: center;
-  margin-bottom: 4rem;
 }
 
 .underline {
@@ -239,149 +258,34 @@ nav ul {
   height: 100vh;
   padding: 0 2rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .container {
-    display: flex;
-    width: 75vw;
 
-    /// Expandable image
-    .panel {
-      background-size: auto 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 80vh;
-      border-radius: 50px;
-      color: white;
-      cursor: pointer;
-      flex: 0.5;
-      margin: 10px;
-      position: relative;
-      transition: flex 0.7s ease-in;
-
-      h3 {
-        font-size: 24px;
-        position: absolute;
-        bottom: 0;
-        margin: 0;
-        opacity: 0;
-        transition: opacity 0.3s ease-in 0.4s;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .active {
-      flex: 5;
-
-      h3 {
-        opacity: 1;
-      }
-    }
+//// Media queries for mobile
+@media only screen and (max-width: 768px) {
+  .app-container {
+    margin-top: 60px;
   }
-}
 
-.review {
-  background: var(--clr-white);
-  padding: 1.5rem 2rem;
-  border-radius: var(--radius);
-  box-shadow: var(--light-shadow);
-  transition: var(--transition);
-  text-align: center;
-  width: 500px;
-}
+  #sidebar {
+    background-color: white;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 
-.review:hover {
-  box-shadow: var(--dark-shadow);
-}
+  .hide-mobile {
+    display: none;
+  }
 
-.img-container {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 0 auto;
-  margin-bottom: 1.5rem;
-}
-
-.person-img {
-  width: 100%;
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  position: relative;
-}
-
-.quote-icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  transform: translateY(25%);
-  background: var(--clr-primary-5);
-  color: var(--clr-white);
-}
-
-.img-container::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: var(--clr-primary-5);
-  position: absolute;
-  top: -0.25rem;
-  right: -0.5rem;
-  border-radius: 50%;
-}
-
-.author {
-  margin-bottom: 0.25rem;
-}
-
-.job {
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  color: var(--clr-primary-5);
-  font-size: 0.85rem;
-}
-
-.info {
-  margin-bottom: 0.75rem;
-}
-
-.prev-btn,
-.next-btn {
-  color: var(--clr-primary-7);
-  font-size: 1.25rem;
-  background: transparent;
-  border-color: transparent;
-  margin: 0 0.5rem;
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-  color: var(--clr-primary-5);
-}
-
-.random-btn {
-  margin-top: 0.5rem;
-  background: var(--clr-primary-10);
-  color: var(--clr-primary-5);
-  padding: 0.25rem 0.5rem;
-  text-transform: capitalize;
-  border-radius: var(--radius);
-  transition: var(--transition);
-  border-color: transparent;
-  cursor: pointer;
-}
-
-.random-btn:hover {
-  background: var(--clr-primary-5);
-  color: var(--clr-primary-1);
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

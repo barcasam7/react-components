@@ -6,11 +6,11 @@ const Layout = () => {
     <>
       <Nav />
       <section className="app-container">
-        <div className="title">
+        <div className="title hide-mobile">
           <h2>Components</h2>
           <div className="underline"></div>
-          <Outlet />
         </div>
+        <Outlet />
       </section>
     </>
   );

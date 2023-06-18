@@ -37,7 +37,7 @@ const images: image[] = [
 const ExpandableImage = () => {
   let [imageId, setImageId] = useState<number>(1);
   return (
-    <div className="container">
+    <div className="image-container">
       {images.map(image => (
         <div
           key={image.id}
