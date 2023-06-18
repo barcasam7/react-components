@@ -1,52 +1,7 @@
 @use 'components/_reviews.scss';
 @use 'components/_expandableImage.scss';
-
-/*
-=============== 
-Variables
-===============
-*/
-
-:root {
-  /* dark shades of primary color*/
-  --clr-primary-1: hsl(205, 86%, 17%);
-  --clr-primary-2: hsl(205, 77%, 27%);
-  --clr-primary-3: hsl(205, 72%, 37%);
-  --clr-primary-4: hsl(205, 63%, 48%);
-  /* primary/main color */
-  --clr-primary-5: hsl(205, 78%, 60%);
-  /* lighter shades of primary color */
-  --clr-primary-6: hsl(205, 89%, 70%);
-  --clr-primary-7: hsl(205, 90%, 76%);
-  --clr-primary-8: hsl(205, 86%, 81%);
-  --clr-primary-9: hsl(205, 90%, 88%);
-  --clr-primary-10: hsl(205, 100%, 96%);
-  /* darkest grey - used for headings */
-  --clr-grey-1: hsl(209, 61%, 16%);
-  --clr-grey-2: hsl(211, 39%, 23%);
-  --clr-grey-3: hsl(209, 34%, 30%);
-  --clr-grey-4: hsl(209, 28%, 39%);
-  /* grey used for paragraphs */
-  --clr-grey-5: hsl(210, 22%, 49%);
-  --clr-grey-6: hsl(209, 23%, 60%);
-  --clr-grey-7: hsl(211, 27%, 70%);
-  --clr-grey-8: hsl(210, 31%, 80%);
-  --clr-grey-9: hsl(212, 33%, 89%);
-  --clr-grey-10: hsl(210, 36%, 96%);
-  --clr-white: #fff;
-  --clr-red-dark: hsl(360, 67%, 44%);
-  --clr-red-light: hsl(360, 71%, 66%);
-  --clr-green-dark: hsl(125, 67%, 44%);
-  --clr-green-light: hsl(125, 71%, 66%);
-  --clr-black: #222;
-  --transition: all 0.3s linear;
-  --spacing: 0.1rem;
-  --radius: 0.25rem;
-  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  --max-width: 1170px;
-  --fixed-width: 620px;
-}
+@use 'variables';
+@use 'partials/nav.scss';
 
 /*
 =============== 
@@ -174,68 +129,9 @@ main {
   display: none;
 }
 
-
-.hamburger {
-  display: none;
-  height: 50px;
-  width: 50px;
-
-  .bar {
-    background-color: black;
-    height: 4px;
-    width: 36px;
-    margin: 3px;
-  }
+.opened {
+  display: block;
 }
-
-nav {
-  position: relative;
-  margin: 0 8%;
-  text-align: right;
-  font-weight: bold;
-}
-
-nav ul {
-  list-style: none;
-
-  li {
-    position: relative;
-    margin: 3.2em 0;
-
-    a {
-      line-height: 5em;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 0.4em;
-      color: rgba(0, 0, 0);
-      display: block;
-      transition: all ease-out 300ms;
-    }
-
-    &.active a {
-      color: var(--clr-primary-5);
-    }
-
-    &:not(.active)::after {
-      opacity: 0.2;
-    }
-
-    &:not(.active):hover a {
-      color: var(--clr-primary-5);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 0.2em;
-      left: 0;
-      bottom: 0;
-      background-image: linear-gradient(to right, #332f3d, var(--clr-primary-5))
-    }
-  }
-}
-
 
 .title {
   margin-top: 10px;
@@ -262,30 +158,12 @@ nav ul {
   align-items: center;
 }
 
-
-//// Media queries for mobile
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 820px) {
   .app-container {
-    margin-top: 60px;
-  }
-
-  #sidebar {
-    background-color: white;
-    position: fixed;
-    z-index: 4;
-    top: 0;
-    left: 0;
     width: 100%;
-  }
 
-  .hide-mobile {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    .review {
+      width: 100%;
+    }
   }
 }

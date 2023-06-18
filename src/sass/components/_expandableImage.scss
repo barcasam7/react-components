@@ -14,7 +14,8 @@
         flex-grow: 0.5;
         margin: 10px;
         position: relative;
-        transition: flex 0.7s ease-in;
+        transition: all 0.7s ease-in;
+        filter: grayscale(1);
 
         h3 {
             font-size: 24px;
@@ -30,9 +31,20 @@
 
     .active {
         flex-grow: 5;
+        filter: none;
 
         h3 {
             opacity: 1;
         }
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .panel:nth-child(4) {
+        display: none;
+    }
+
+    .panel:nth-child(5) {
+        display: none;
     }
 }
