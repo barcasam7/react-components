@@ -27,7 +27,7 @@ const Nav = () => {
             <Link to="expandable-image">Expandable Image</Link>
           </li>
           <li>
-            <Link to="expandable-image">Github Profile Search</Link>
+            <Link to="github-profile">Github Profile Search</Link>
           </li>
           <li>
             <Link to="reviews">Card Transitions</Link>
@@ -45,24 +45,34 @@ const Nav = () => {
       <nav className={open ? "opened mobile-nav" : "mobile-nav"}>
         <ul>
           <li>
-            <Link className="active" to={"/"}>
+            <Link className="active" to={"/"} onClick={toggleMenu}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" onClick={toggleMenu}>
+              Reviews
+            </Link>
           </li>
           <li>
-            <Link to="expandable-image">Expandable Image</Link>
+            <Link to="expandable-image" onClick={toggleMenu}>
+              Expandable Image
+            </Link>
           </li>
           <li>
-            <Link to="expandable-image">Github Profile Search</Link>
+            <Link to="github-profile" onClick={toggleMenu}>
+              Github Profile Search
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Card Transitions</Link>
+            <Link to="reviews" onClick={toggleMenu}>
+              Card Transitions
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Password Generator</Link>
+            <Link to="reviews" onClick={toggleMenu}>
+              Password Generator
+            </Link>
           </li>
         </ul>
       </nav>
