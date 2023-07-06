@@ -15,7 +15,7 @@ const GithubProfile = () => {
   const [user, setUser] = useState<profile | null>(null);
   const [search, setSearch] = useState<string>("");
 
-  const searchProfile = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const searchProfile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     setSearch(target.value);
   };
@@ -25,7 +25,7 @@ const GithubProfile = () => {
     axios
       .get(`https://api.github.com/users/${search}`)
       .then(data => setUser(data.data))
-      .catch(error => setUser(null));
+      .catch(() => setUser(null));
   };
   return (
     <>
