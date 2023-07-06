@@ -71,7 +71,9 @@ const GithubProfile = () => {
             </div>
           </div>
         )}
-        {user === null && <p>No user found for that username</p>}
+        {user === null && search !== "" && (
+          <p>No user found for that username</p>
+        )}
       </main>
     </>
   );
