@@ -20,6 +20,7 @@ const GithubProfile = () => {
   const [user, setUser] = useState<profile | null>(null);
   const [search, setSearch] = useState<string>("");
   const [repos, setRepos] = useState<repo[]>([]);
+  const [userNotFound, setUserNotFound] = useState<boolean>(false);
 
   const searchProfile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -33,8 +34,9 @@ const GithubProfile = () => {
       .then(data => {
         setUser(data.data);
         getRepos();
+        setUserNotFound(false);
       })
-      .catch(() => setUser(null));
+      .catch(() => setUserNotFound(true));
   };
 
   const getRepos = (): void => {
@@ -81,6 +83,7 @@ const GithubProfile = () => {
             </div>
           </div>
         )}
+        {userNotFound && <p>No user found for that username</p>}
       </main>
     </>
   );
