@@ -11,31 +11,43 @@ type profile = {
   public_repos: number;
 };
 
+type repo = {
+  name: string;
+  html_url: string;
+};
+
 const GithubProfile = () => {
   const [user, setUser] = useState<profile | null>(null);
   const [search, setSearch] = useState<string>("");
+  const [repos, setRepos] = useState<repo[]>([]);
 
   const searchProfile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     setSearch(target.value);
   };
 
-  const getUsers = (event: React.FormEvent<HTMLFormElement>) => {
+  const getUsers = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     axios
       .get(`https://api.github.com/users/${search}`)
-      .then(data => setUser(data.data))
+      .then(data => {
+        setUser(data.data);
+        getRepos();
+      })
       .catch(() => setUser(null));
   };
+
+  const getRepos = (): void => {
+    axios
+      .get(`https://api.github.com/users/${search}/repos`)
+      .then(data => setRepos(data.data.slice(0, 10)))
+      .catch(() => setRepos([]));
+  };
+
   return (
     <>
       <form className="user-form" id="form" onSubmit={e => getUsers(e)}>
-        <input
-          type="text"
-          id="search"
-          placeholder="Search a Github User"
-          onChange={e => searchProfile(e)}
-        />
+        <input type="text" id="search" placeholder="Search a Github User" onChange={e => searchProfile(e)} />
       </form>
       <main id="main">
         {user !== null && (
@@ -57,22 +69,17 @@ const GithubProfile = () => {
                   {user.public_repos} <strong>Repos</strong>
                 </li>
               </ul>
-              <div id="repos">
-                <a href="" className="repo">
-                  Repo
-                </a>
-                <a href="" className="repo">
-                  Repo
-                </a>
-                <a href="" className="repo">
-                  Repo
-                </a>
-              </div>
+              {repos.length > 0 && (
+                <div id="repos">
+                  {repos.map(repo => (
+                    <a target="_blank" href={repo.html_url} className="repo">
+                      {repo.name}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        )}
-        {user === null && search !== "" && (
-          <p>No user found for that username</p>
         )}
       </main>
     </>
