@@ -28,7 +28,7 @@ const Nav = () => {
             routes.map((route, key) => (
               <li key={key}>
                 <Link className={location.pathname === route.path ? "active" : ""} to={route.path as string}>
-                  {route.path?.substring(1).replace("-", " ")}
+                  {route.path?.replace(/-/gm, " ").substring(1)}
                 </Link>
               </li>
             ))}
@@ -50,7 +50,7 @@ const Nav = () => {
             routes.map((route, key) => (
               <li key={key}>
                 <Link onClick={toggleMenu} className={location.pathname === route.path ? "active" : ""} to={route.path as string}>
-                  {route.path?.substring(1).replace("-", " ")}
+                  {route.path?.replace(/-/gm, " ").substring(1)}
                 </Link>
               </li>
             ))}
