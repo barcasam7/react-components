@@ -1,15 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-type link = {
-  link: string;
-  name: string;
-};
+import router from "../router/router";
 
 const Nav = () => {
   const [open, setOpen] = useState<boolean>(false);
   let location = useLocation();
-  console.log(location);
 
   const toggleMenu = () => {
     document.getElementById("bar1")?.classList.toggle("animateBar1");
@@ -18,24 +13,25 @@ const Nav = () => {
     setOpen(!open);
   };
 
-  const routes: link[] = [
-    { link: "/", name: "home" },
-    { link: "/reviews", name: "reviews" },
-    { link: "/expandable-image", name: "expandable image" },
-    { link: "/github-profile", name: "github profile search" },
-  ];
+  let routes = router.routes[0] !== undefined ? router.routes[0].children : [];
 
   return (
     <div id="sidebar">
       <nav className="hide-mobile nav">
         <ul>
-          {routes.map((route, key) => (
-            <li key={key}>
-              <Link className={location.pathname === route.link ? "active" : ""} to={route.link}>
-                {route.name}
-              </Link>
-            </li>
-          ))}
+          <li key="0">
+            <Link className={location.pathname === "/" ? "active" : ""} to="/">
+              Home
+            </Link>
+          </li>
+          {routes !== undefined &&
+            routes.map((route, key) => (
+              <li key={key}>
+                <Link className={location.pathname === route.path ? "active" : ""} to={route.path as string}>
+                  {route.path?.substring(1).replace("-", " ")}
+                </Link>
+              </li>
+            ))}
         </ul>
       </nav>
       <div className="hamburger" onClick={toggleMenu}>
@@ -45,13 +41,19 @@ const Nav = () => {
       </div>
       <nav className={open ? "opened mobile-nav" : "mobile-nav"}>
         <ul>
-          {routes.map((route, key) => (
-            <li key={key}>
-              <Link className={location.pathname === route.link ? "active" : ""} to={route.link}>
-                {route.name}
-              </Link>
-            </li>
-          ))}
+          <li key="0">
+            <Link onClick={toggleMenu} className={location.pathname === "/" ? "active" : ""} to="/">
+              Home
+            </Link>
+          </li>
+          {routes !== undefined &&
+            routes.map((route, key) => (
+              <li key={key}>
+                <Link onClick={toggleMenu} className={location.pathname === route.path ? "active" : ""} to={route.path as string}>
+                  {route.path?.substring(1).replace("-", " ")}
+                </Link>
+              </li>
+            ))}
         </ul>
       </nav>
     </div>
