@@ -33,10 +33,11 @@ nav ul {
             color: rgba(0, 0, 0);
             display: block;
             transition: all ease-out 300ms;
-        }
 
-        &.active a {
-            color: var(--clr-primary-5);
+            &.active {
+                color: var(--clr-primary-5);
+                text-decoration: underline;
+            }
         }
 
         &:not(.active)::after {

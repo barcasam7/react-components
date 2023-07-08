@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
+type link = {
+  link: string;
+  name: string;
+};
 
 const Nav = () => {
   const [open, setOpen] = useState<boolean>(false);
+  let location = useLocation();
+  console.log(location);
 
   const toggleMenu = () => {
     document.getElementById("bar1")?.classList.toggle("animateBar1");
@@ -11,30 +18,24 @@ const Nav = () => {
     setOpen(!open);
   };
 
+  const routes: link[] = [
+    { link: "/", name: "home" },
+    { link: "/reviews", name: "reviews" },
+    { link: "/expandable-image", name: "expandable image" },
+    { link: "/github-profile", name: "github profile search" },
+  ];
+
   return (
     <div id="sidebar">
       <nav className="hide-mobile nav">
         <ul>
-          <li>
-            <Link className="active" to={"/"}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-          <li>
-            <Link to="expandable-image">Expandable Image</Link>
-          </li>
-          <li>
-            <Link to="github-profile">Github Profile Search</Link>
-          </li>
-          <li>
-            <Link to="reviews">Card Transitions</Link>
-          </li>
-          <li>
-            <Link to="reviews">Password Generator</Link>
-          </li>
+          {routes.map((route, key) => (
+            <li key={key}>
+              <Link className={location.pathname === route.link ? "active" : ""} to={route.link}>
+                {route.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
       <div className="hamburger" onClick={toggleMenu}>
@@ -44,36 +45,13 @@ const Nav = () => {
       </div>
       <nav className={open ? "opened mobile-nav" : "mobile-nav"}>
         <ul>
-          <li>
-            <Link className="active" to={"/"} onClick={toggleMenu}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" onClick={toggleMenu}>
-              Reviews
-            </Link>
-          </li>
-          <li>
-            <Link to="expandable-image" onClick={toggleMenu}>
-              Expandable Image
-            </Link>
-          </li>
-          <li>
-            <Link to="github-profile" onClick={toggleMenu}>
-              Github Profile Search
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" onClick={toggleMenu}>
-              Card Transitions
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" onClick={toggleMenu}>
-              Password Generator
-            </Link>
-          </li>
+          {routes.map((route, key) => (
+            <li key={key}>
+              <Link className={location.pathname === route.link ? "active" : ""} to={route.link}>
+                {route.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
