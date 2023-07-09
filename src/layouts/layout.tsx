@@ -7,7 +7,7 @@ const Layout = () => {
       <Nav />
       <section className="app-container">
         <div className="title hide-mobile">
-          <h2>Components</h2>
+          <h2>React & Typescript Components</h2>
           <div className="underline"></div>
         </div>
         <Outlet />

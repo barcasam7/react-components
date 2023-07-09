@@ -4,6 +4,7 @@ import ErrorPage from "../error.page.tsx";
 import ExpandableImage from "../components/ExpandableImage.tsx";
 import GithubProfile from "../components/GithubProfile.tsx";
 import App from "../App.tsx";
+import DragDrogUpload from "../components/DragDropUpload.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/github-profile-search",
         element: <GithubProfile />,
+      },
+      {
+        path: "/drag-drop-upload",
+        element: <DragDrogUpload />,
       },
     ],
   },
