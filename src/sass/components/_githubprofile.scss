@@ -82,11 +82,32 @@
 
 @media(max-width: 500px) {
     .card {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        max-width: 85vw;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .user-form {
         max-width: 400px;
+    }
+
+    .user-info {
+        width: 100%;
+        display: flex;
+        overflow-wrap: anywhere;
+        flex-direction: column;
+        margin-left: 0px;
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
     }
 }
