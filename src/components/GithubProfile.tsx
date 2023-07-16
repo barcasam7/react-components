@@ -22,7 +22,7 @@ const GithubProfile = () => {
    const [search, setSearch] = useState<string>("");
    const [repos, setRepos] = useState<repo[]>([]);
    const [userNotFound, setUserNotFound] = useState<boolean>(false);
-   const [isLoading, setLoading] = useState<boolean>(true);
+   const [isLoading, setLoading] = useState<boolean>(false);
 
    const searchProfile = (event: React.ChangeEvent<HTMLInputElement>) => {
       const target = event.target as HTMLInputElement;
