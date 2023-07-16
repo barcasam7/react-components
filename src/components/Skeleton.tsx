@@ -1,4 +1,8 @@
-const Skeleton = () => {
+type props = {
+   rows: number;
+};
+
+const Skeleton = ({ rows }: props) => {
    return (
       <div className="card skeleton">
          <div>
@@ -6,9 +10,9 @@ const Skeleton = () => {
          </div>
          <div className="user-info">
             <h2></h2>
-            <p></p>
-            <p></p>
-            <p></p>
+            {[...Array(rows)].map((_value) => {
+               return <p></p>;
+            })}
          </div>
       </div>
    );

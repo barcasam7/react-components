@@ -22,7 +22,7 @@ const GithubProfile = () => {
    const [search, setSearch] = useState<string>("");
    const [repos, setRepos] = useState<repo[]>([]);
    const [userNotFound, setUserNotFound] = useState<boolean>(false);
-   const [isLoading, setLoading] = useState<boolean>(false);
+   const [isLoading, setLoading] = useState<boolean>(true);
 
    const searchProfile = (event: React.ChangeEvent<HTMLInputElement>) => {
       const target = event.target as HTMLInputElement;
@@ -59,7 +59,7 @@ const GithubProfile = () => {
             <input type="text" id="search" placeholder="Search a Github User" onChange={(e) => searchProfile(e)} />
          </form>
          <main id="main">
-            {isLoading && <Skeleton />}
+            {isLoading && <Skeleton rows={3} />}
             {user !== null && !userNotFound && !isLoading && (
                <div className="card">
                   <div>
