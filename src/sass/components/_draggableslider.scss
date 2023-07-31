@@ -1,0 +1,90 @@
+.wrapper {
+    background-color: #fff;
+    overflow-x: hidden;
+    max-width: 1000px;
+    border-radius: 13px;
+    position: relative;
+    padding: 10px;
+
+    .icon {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 120px;
+        display: flex;
+        align-items: center;
+
+        &:first-child {
+            background: linear-gradient(90deg, #fff, 70%, transparent);
+            left: 0;
+
+            svg {
+                margin-left: 15px;
+            }
+        }
+
+        &:last-child {
+            background: linear-gradient(-90deg, #fff, 70%, transparent);
+            right: 0;
+            justify-content: flex-end;
+
+            svg {
+                margin-right: 15px;
+            }
+        }
+
+        svg {
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            background-color: var(--clr-grey-9);
+            border: 1px solid var(--clr-grey-9);
+
+            &:hover {
+                background-color: var(--clr-grey-6);
+            }
+        }
+    }
+
+    .tabs-box {
+        display: flex;
+        list-style: none;
+        gap: 12px;
+        list-style: none;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+
+        .tab {
+            cursor: pointer;
+            font-size: 1rem;
+            white-space: nowrap;
+            background: var(--clr-grey-10);
+            padding: 5px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--clr-grey-9)
+        }
+
+        .active {
+            color: #fff;
+            background: #5372F0;
+            border-color: transparent;
+        }
+    }
+
+    .tabs-box .tab:hover {
+        background: #efedfb;
+    }
+
+    .tabs-box.dragging .tab {
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .tabs-box.dragging {
+        scroll-behavior: auto;
+        cursor: grab;
+    }
+}

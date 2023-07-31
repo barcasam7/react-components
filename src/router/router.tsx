@@ -6,6 +6,7 @@ import GithubProfile from "../components/GithubProfile.tsx";
 import App from "../App.tsx";
 import DragDrogUpload from "../components/DragDropUpload.tsx";
 import LiveSearch from "../components/LiveSearch.tsx";
+import DraggableSlider from "../components/DraggableSlider.tsx";
 
 const router = createBrowserRouter([
    {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
          {
             path: "/live-search",
             element: <LiveSearch />,
+         },
+         {
+            path: "/draggable-slider",
+            element: <DraggableSlider />,
          },
       ],
    },
