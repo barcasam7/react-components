@@ -7,6 +7,7 @@ import App from "../App.tsx";
 import DragDrogUpload from "../components/DragDropUpload.tsx";
 import LiveSearch from "../components/LiveSearch.tsx";
 import DraggableSlider from "../components/DraggableSlider.tsx";
+import Payment from "../components/Payment.tsx";
 
 const router = createBrowserRouter([
    {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
          {
             path: "/draggable-slider",
             element: <DraggableSlider />,
+         },
+         {
+            path: "/payment",
+            element: <Payment />,
          },
       ],
    },
