@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Payment = () => {
    const [_cardNumber, setCardNumber] = useState<string>("");
    const [_name, setName] = useState<string>("");
    const [_CVV, setCVV] = useState<string>("");
    const [_expiry, setExpiry] = useState<string>("");
+   const card = useRef<null | HTMLDivElement>(null);
 
    function inputCardNumber(event: React.KeyboardEvent<HTMLInputElement>) {
       const cardNumber = (event.target as HTMLInputElement).value.slice(0, 16).replace(/\D/g, "");
@@ -37,19 +38,17 @@ const Payment = () => {
    }
 
    function flipCard() {
-      const card = document.getElementById("card");
-      if (card === null) {
+      if (card.current === null) {
          return;
       }
-      card.style.transform = "rotateY(180deg)";
+      card.current.style.transform = "rotateY(180deg)";
    }
 
    function flipBack() {
-      const card = document.getElementById("card");
-      if (card === null) {
+      if (card.current === null) {
          return;
       }
-      card.style.transform = "rotateY(0deg)";
+      card.current.style.transform = "rotateY(0deg)";
    }
 
    function inputCVV(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -88,7 +87,7 @@ const Payment = () => {
 
    return (
       <div className="payment-wrapper">
-         <div className="credit-card" id="card">
+         <div ref={card} className="credit-card" id="card">
             <div className="card-front">
                <div className="branding">
                   <img src="/chip.png" className="chip-img" />
